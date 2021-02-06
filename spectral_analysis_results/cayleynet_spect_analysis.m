@@ -64,7 +64,7 @@ for j=1:3
     Fr(:,j)=cos(j*teta);
     Fi(:,j)=-sin(j*teta);
 end
-
+F=zeros(size(Fr,1),7);
 F(:,2)=Fr(:,1);
 F(:,3)=Fi(:,1);
 F(:,4)=Fr(:,2);
