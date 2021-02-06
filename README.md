@@ -20,6 +20,20 @@ GIN's frequency response
 
 ## Datasets
 In this research, we introduced two different dataset. One named 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
+You can load that dataset and viualize it by follwing matlab script
+```
+load dataset/2Dgrid/raw/2Dgrid
+subplot(2,2,1);imagesc(reshape(F,[95 95]));axis equal
+title('given images');
+subplot(2,2,2);imagesc(reshape(Y(:,1),[95 95]));axis equal
+title('band-pass images');
+subplot(2,2,3);imagesc(reshape(Y(:,2),[95 95]));axis equal
+title('low-pass images');
+subplot(2,2,4);imagesc(reshape(Y(:,3),[95 95]));axis equal
+title('high-pass images');
+```
+
+![Sample image](images/filter.jpg?raw=true "Title")
 
 
 
