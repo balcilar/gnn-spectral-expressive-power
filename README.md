@@ -35,7 +35,18 @@ title('high-pass images');
 
 ![Sample image](images/filter.jpg?raw=true "Title")
 
-Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize 2 sample graph by following Matlab script.
+Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
+
+```
+load dataset/bandclass/raw/bandclass
+i=21;
+G=gsp_graph(squeeze(A(i,:,:)),squeeze(coor(i,:,:)));
+figure;gsp_plot_signal(G,F(i,:))
+i=1000;
+G=gsp_graph(squeeze(A(i,:,:)),squeeze(coor(i,:,:)));
+figure;gsp_plot_signal(G,F(i,:))
+```
+![Sample image](images/graph.jpg?raw=true "Title")
 
 
 ## MNIST
