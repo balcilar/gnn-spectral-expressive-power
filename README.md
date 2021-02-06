@@ -18,6 +18,12 @@ GIN's frequency response
 ```
 ![Sample image](images/gin.jpg?raw=true "Title")
 
+## Datasets
+In this research, we introduced two different dataset. One named 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
+
+
+
+
 ## MNIST
 
 https://graphics.cs.tu-dortmund.de/fileadmin/ls7-www/misc/cvpr/mnist_superpixels.tar.gz
