@@ -35,6 +35,18 @@ title('high-pass images');
 
 ![Sample image](images/filter.jpg?raw=true "Title")
 
+You can also read the dataset using Pytorch-geometric by following Python script. Dataset consist of just one graph, its adjacency, pixel value, 3 different target value and mask which we exclude 2 pixel borderline.
+```
+from utils import TwoDGrid
+dataset = TwoDGrid(root='dataset/2Dgrid', pre_transform=None)
+print(len(dataset))
+print(dataset[0])
+
+1
+Data(edge_index=[2, 358685], m=[9025, 1], x=[9025, 1], y=[9025, 3])
+```
+
+
 Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
 
 ```
@@ -48,6 +60,16 @@ figure;gsp_plot_signal(G,F(i,:))
 ```
 ![Sample image](images/graph.jpg?raw=true "Title")
 
+You can read this dataset using Pytorch-geometric by following Python script.
+```
+from utils import BandClassDataset
+dataset = BandClassDataset(root='dataset/bandclass', pre_transform=None)
+print(len(dataset))
+print(dataset[0])
+
+5000
+Data(edge_index=[2, 1074], x=[200, 1], y=[1])
+```
 
 ## MNIST
 
