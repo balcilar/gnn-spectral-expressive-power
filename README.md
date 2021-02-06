@@ -1,1 +1,1 @@
-# gnn_spectral_expressive_power
+# Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective
