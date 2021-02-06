@@ -13,7 +13,9 @@ For instance, Chebnet's frequency response
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
 GIN's frequency response
-
+```
+>gin_spectral_analysis
+```
 ![Sample image](images/gin.jpg?raw=true "Title")
 
 ## MNIST
