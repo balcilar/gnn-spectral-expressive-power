@@ -35,7 +35,7 @@ title('high-pass images');
 
 ![Sample image](images/filter.jpg?raw=true "Title")
 
-
+Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize 2 sample graph by following Matlab script.
 
 
 ## MNIST
