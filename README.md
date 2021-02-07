@@ -17,7 +17,7 @@ For Chebnet's frequency response
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
-For CayleyNet's frequency response
+For CayleyNet's frequency response fro zoom parameter is 1.
 ```
 >cayley_spectral_analysis
 ```
