@@ -37,10 +37,10 @@ For GAT's frequency response
 
 
 ## Datasets
-In this research, we introduced two different new datasets and one common dataset. 
+In this research, we introduced two new datasets and one common dataset. 
 
 ### 2D-grid graph
-One named 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
+To the spectral expressive power test, we introduced 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
 You can load that dataset and viualize it by follwing matlab script
 ```
 load dataset/2Dgrid/raw/2Dgrid
@@ -68,7 +68,7 @@ Data(edge_index=[2, 358685], m=[9025, 1], x=[9025, 1], y=[9025, 3])
 ```
 
 ### BandClass
-Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
+Another introduced dataset for spectral expressive power is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
 
 ```
 load dataset/bandclass/raw/bandclass
@@ -125,7 +125,7 @@ Briefly launch the mnist_code.py script. You set the method selection hard coded
 	python mnist_code.py
 	
 
-## MNIST Dataset Results
+## 2DGrid Dataset Results
 
 Briefly launch the appendix_I.py script. You set the method selection hard coded. You can select your method and launch the script.
 
