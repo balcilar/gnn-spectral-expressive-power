@@ -84,7 +84,7 @@ grid on;
 axis equal
 view(46,41)
 
-title('CayleyNet theoretical freq response on Cora')
+title('CayleyNet theoretical freq response')
 xlabel('eigenvalues');
 ylabel('Convolution Supports');
 zlabel('Magnitude');
