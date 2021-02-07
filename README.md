@@ -11,14 +11,14 @@ Here are our theoretical findings on frequency responses of GNNs
 Studied GNN's spectral analysis codes are in the spectral_analysis_codes folder. Those codes were written in Matlab.
 You can briefly run each script for each method independently and see the empirical frequency responses on the Cora graph and and the theoretical ones.
 
-Chebnet's frequency response
+Chebnet's first 5 convolution support's frequency response
 ```
 >chebnet_spectral_analysis
 ```
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
-CayleyNet's frequency response for zoom parameter is 1.
+CayleyNet's first 7 convolution support's frequency response for zoom parameter is 1.
 ```
 >cayleynet_spectral_analysis
 ```
