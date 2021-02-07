@@ -19,7 +19,10 @@ GIN's frequency response
 ![Sample image](images/gin.jpg?raw=true "Title")
 
 ## Datasets
-In this research, we introduced two different dataset. One named 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
+In this research, we introduced two different new datasets and one common dataset. 
+
+### 2D-grid graph
+One named 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
 You can load that dataset and viualize it by follwing matlab script
 ```
 load dataset/2Dgrid/raw/2Dgrid
@@ -46,7 +49,7 @@ print(dataset[0])
 Data(edge_index=[2, 358685], m=[9025, 1], x=[9025, 1], y=[9025, 3])
 ```
 
-
+### BandClass
 Another introduced dataset is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
 
 ```
@@ -71,6 +74,7 @@ print(dataset[0])
 Data(edge_index=[2, 1074], x=[200, 1], y=[1])
 ```
 
+### MNIST-75
 Last, we used MNIST superpixel dataset in our analysis. You can download and extract the "train.pt" and "test.pt" files into dataset/MNIST/raw/ folder. Here is the most recent link of Mnist-75.
 https://graphics.cs.tu-dortmund.de/fileadmin/ls7-www/misc/cvpr/mnist_superpixels.tar.gz
 
@@ -96,4 +100,15 @@ Data(edge_index=[2, 1399], lmax=1.2635252, pos=[75, 2], x=[75, 2], y=[1])
 Data(edge_index=[2, 1405], lmax=1.2760227, pos=[75, 2], x=[75, 2], y=[1])
 ```
 
+## MNIST Dataset Results
+
+Briefly launch the mnist_code.py script. You set the method selection hard coded. You can select your method and launch the script.
+
+## MNIST Dataset Results
+
+Briefly launch the appendix_I.py script. You set the method selection hard coded. You can select your method and launch the script.
+
+## BandClass Dataset Results
+
+Briefly launch the appendix_J.py script. You set the method selection hard coded. You can select your method and launch the script.
 
