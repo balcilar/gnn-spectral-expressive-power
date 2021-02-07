@@ -7,7 +7,7 @@ Studied GNN's spectral analysis codes are in spectral_analysis_result folder. Th
 You can briefly run each script for each method independently and see the empirical and theoretical frequency responses on Cora graph.
 For instance, Chebnet's frequency response
 ```
->cayley_spectral_analysis
+>chebnet_spectral_analysis
 ```
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
