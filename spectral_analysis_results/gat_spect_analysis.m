@@ -38,13 +38,7 @@ for i=1:250
     bb(:,i)=diag(u'*qq*u);
 end
 
-gat=[];
-ov=0:0.01:2;
-for i=1:size(bb,2)
-    gat(i,:)=interp1(v+0.0001*randn(size(v)),bb(:,i),ov);    
-end
-
-figure;plot(ov,abs(gat'))
+figure;plot(v,abs(bb))
 title('Gat empirical freq response of each simulation on cora');
 xlabel('Eigenvalue');
 ylabel('Magnitude');
