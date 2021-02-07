@@ -1,15 +1,15 @@
 # Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective
 
-This repository consist of codes of ["Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective"](https://openreview.net/forum?id=-qh0M9XWxnv) paper published in ICLR2021.
+This repository consists of codes of ["Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective"](https://openreview.net/forum?id=-qh0M9XWxnv) paper published in ICLR2021.
 
 ## Theoretical and Empirical Frequency Responses
-Here is the our theoretical findings on frequency responses of GNNs
+Here are our theoretical findings on frequency responses of GNNs
 
 ![Sample image](images/freqresponsetable.jpg?raw=true "Title")
 
 
-Studied GNN's spectral analysis codes are in spectral_analysis_result folder. Those codes were written in Matlab.
-You can briefly run each script for each method independently and see the empirical and theoretical frequency responses on Cora graph.
+Studied GNN's spectral analysis codes are in the spectral_analysis_result folder. Those codes were written in Matlab.
+You can briefly run each script for each method independently and see the empirical and theoretical frequency responses on the Cora graph.
 For Chebnet's frequency response
 ```
 >chebnet_spectral_analysis
@@ -17,7 +17,7 @@ For Chebnet's frequency response
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
-For CayleyNet's frequency response fro zoom parameter is 1.
+For CayleyNet's frequency response for zoom parameter is 1.
 ```
 >cayley_spectral_analysis
 ```
@@ -47,8 +47,8 @@ For GAT's frequency response
 In this research, we introduced two new datasets and one common dataset. 
 
 ### 2D-grid graph
-To the spectral expressive power test, we introduced 2D-grid graph consist of 95x95 resolution and 4-neighborhood regular grid graph. Each nodes refers the pixel in the image. We prepared low-pass, high-pass and band-pass filtering results as output of filter learning task.
-You can load that dataset and viualize it by follwing matlab script
+For the spectral expressive power test, we introduced 2D-grid graph consist of 95x95 resolution and a 4-neighborhood regular grid graph. Each node refers to the pixel in the image. We prepared low-pass, high-pass, and band-pass filtering results as the output of the filter learning task.
+You can load that dataset and visualize it by following the Matlab script
 ```
 load dataset/2Dgrid/raw/2Dgrid
 subplot(2,2,1);imagesc(reshape(F,[95 95]));axis equal
@@ -63,7 +63,7 @@ title('high-pass images');
 
 ![Sample image](images/filter.jpg?raw=true "Title")
 
-You can also read the dataset using Pytorch-geometric by following Python script. Dataset consist of just one graph, its adjacency, pixel value, 3 different target value and mask which we exclude 2 pixel borderline.
+You can also read the dataset using Pytorch-geometric by following Python script. The dataset consists of just one graph, its adjacency, pixel value, 3 different target value and mask which we exclude 2 pixels borderline.
 ```
 from utils import TwoDGrid
 dataset = TwoDGrid(root='dataset/2Dgrid', pre_transform=None)
@@ -75,7 +75,7 @@ Data(edge_index=[2, 358685], m=[9025, 1], x=[9025, 1], y=[9025, 3])
 ```
 
 ### BandClass
-Another introduced dataset for spectral expressive power is BandClass dataset, which consist of 3K train, 1K validation and 1K test planar graph, each has 200 nodes. Problem is binary classification problem where the ground truth of classes were determined by the frequency on the graph. You can visualize two sample graph using gspbox library by following Matlab script.
+Another introduced dataset for spectral expressive power is the BandClass dataset, which consists of 3K train, 1K validation, and 1K test planar graph, each has 200 nodes. Problem is a binary classification problem where the ground truth of classes was determined by the frequency on the graph. You can visualize two sample graphs using gspbox library by following the Matlab script.
 
 ```
 load dataset/bandclass/raw/bandclass
@@ -103,10 +103,10 @@ Data(edge_index=[2, 1074], x=[200, 1], y=[1])
 Last, we used MNIST superpixel dataset in our analysis. You can download and extract the "train.pt" and "test.pt" files into dataset/MNIST/raw/ folder. Here is the most recent link of Mnist-75.
 https://graphics.cs.tu-dortmund.de/fileadmin/ls7-www/misc/cvpr/mnist_superpixels.tar.gz
 
-Sample 2 graph in this dataset can be found in following figure.
+Sample 2 graph in this dataset can be found in the following figure.
 ![Sample image](images/mnist46.jpg?raw=true "Title")
 
-The dataset can be load using Pytorch-geometric by following script. Given sample transform can add node degree and node coordinate to the pixel value as a node features. However we do not use superpixel coordinate in our analysis in order to make the problem harder and more realiztic in terms of graph research. 
+The dataset can be load using Pytorch-geometric by the following script. Given sample transform can add node degree and node coordinate to the pixel value as node features. However, we do not use superpixel coordinate in our analysis in order to make the problem harder and more realistic in terms of graph research. 
 
 ```
 from torch_geometric.datasets import MNISTSuperpixels
@@ -127,26 +127,26 @@ Data(edge_index=[2, 1405], lmax=1.2760227, pos=[75, 2], x=[75, 2], y=[1])
 
 ## MNIST Dataset Results
 
-Briefly launch the mnist_code.py script. You set the method selection hard coded. You can select your method and launch the script.  
+Briefly launch the mnist_code.py script. You set the method selection hardcoded. You can select your method and launch the script.  
 
 	python mnist_code.py
 	
 
 ## 2DGrid Dataset Results
 
-Briefly launch the appendix_I.py script. You set the method selection hard coded. You can select your method and launch the script.
+Briefly launch the appendix_I.py script. You set the method selection hardcoded. You can select your method and launch the script.
 
 	python appendix_I.py
 
 ## BandClass Dataset Results
 
-Briefly launch the appendix_J.py script. You set the method selection hard coded. You can select your method and launch the script.
+Briefly launch the appendix_J.py script. You set the method selection hardcoded. You can select your method and launch the script.
 
 	python appendix_J.py
 
 
 ## Requirements
-These libraries versions are not stricly needed. But these are the configurations in our test machine. Also all dependencies of pytorch-geometric are needed.
+These libraries' versions are not strictly needed. But these are the configurations in our test machine. Also, all dependencies of pytorch-geometric are needed.
 - Python==3.8.5
 - pytorch==1.5.1
 - pytorch_geometric==1.6.1
@@ -168,6 +168,6 @@ Please cite this paper if you use codes and/or datasets in your work,
 	url={https://openreview.net/forum?id=-qh0M9XWxnv}
 	}
 
-  
+  
 ## License
 MIT License
