@@ -146,7 +146,19 @@ There is two different Mnist implementations, one is using pytorch_geometric. Ba
 
 	python mnist_code.py
 	
-For 
+For tensorflow1 implementation, we do not use any GNN library. First you need to run the data preparation code. It will read the MNIST-75 dataset, extract adjacency, calculates the Chebnet and GCN supports and save the data into disc in numpy matri format. It is take a while. But it should be run just once.
+
+	python prepareMnist_for_tf.py
+Later, you can launch the code written by tensorflow1 as follows.
+
+	python mnist_tf_code.py
+We have notice that, since the Mnist-75 graphs are quite dense, full matrix multiplication implementation may be faster than edge based multiplication. Thus tf1 implementation is quite faster. Also you can run tf1 implementtaion by GCN and MLP in addition to Chebnet. Around 50th epoch, Chebnet with 5 convolution support in tf1 version is converged.
+
+	Epoch: 46, trainloss: 0.2266, Val: 0.1991,val acc 0.9378, Test: 0.2447, test acc 0.9212 besttest: 9266 
+	Epoch: 47, trainloss: 0.2228, Val: 0.1995,val acc 0.9384, Test: 0.2558, test acc 0.9181 besttest: 9266 
+	Epoch: 48, trainloss: 0.2245, Val: 0.2076,val acc 0.9320, Test: 0.2656, test acc 0.9175 besttest: 9266 
+	Epoch: 49, trainloss: 0.2209, Val: 0.1840,val acc 0.9428, Test: 0.2260, test acc 0.9276 besttest: 9276 
+	Epoch: 50, trainloss: 0.2222, Val: 0.2054,val acc 0.9348, Test: 0.2450, test acc 0.9207 besttest: 9276
 
 
 ## Requirements
