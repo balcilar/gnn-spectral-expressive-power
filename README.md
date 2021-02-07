@@ -8,7 +8,7 @@ Here are our theoretical findings on frequency responses of GNNs
 ![Sample image](images/freqresponsetable.jpg?raw=true "Title")
 
 
-Studied GNN's spectral analysis codes are in the spectral_analysis_result folder. Those codes were written in Matlab.
+Studied GNN's spectral analysis codes are in the spectral_analysis_codes folder. Those codes were written in Matlab.
 You can briefly run each script for each method independently and see the empirical and theoretical frequency responses on the Cora graph.
 For Chebnet's frequency response
 ```
