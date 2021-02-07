@@ -12,8 +12,9 @@ from torch.nn import Sequential, Linear, ReLU
 from torch_geometric.nn import (NNConv, graclus, max_pool, max_pool_x,GINConv,global_add_pool,
                                 global_mean_pool,GATConv,ChebConv,GCNConv)
 from torch_geometric.datasets import MNISTSuperpixels
+
 from utils import DegreeMaxEigTransform
- 
+   
 #select if node degree and location of superpixel region would be used by model or not.
 #after any chnageing please remove MNIST/processed folder in order to preprocess changes again.
 transform=DegreeMaxEigTransform(adddegree=True,addposition=False)
@@ -22,8 +23,8 @@ transform=DegreeMaxEigTransform(adddegree=True,addposition=False)
 train_dataset = MNISTSuperpixels(root='dataset/MNIST/', train=True, pre_transform=transform)
 test_dataset = MNISTSuperpixels(root='dataset/MNIST/', train=False, pre_transform=transform)
 train_loader = DataLoader(train_dataset[0:55000], batch_size=64, shuffle=True)
-val_loader   = DataLoader(train_dataset[55000:60000], batch_size=1000, shuffle=False)
-test_loader  = DataLoader(test_dataset[0:10000], batch_size=1000, shuffle=False)
+val_loader   = DataLoader(train_dataset[55000:60000], batch_size=64, shuffle=False)
+test_loader  = DataLoader(test_dataset[0:10000], batch_size=64, shuffle=False)
 trsize=55000
 tsize=10000
 vsize=5000
@@ -38,7 +39,7 @@ class GcnNet(nn.Module):
         self.conv1 = GCNConv(ninp, nn, cached=False)
         self.conv2 = GCNConv(nn, nn, cached=False)
         self.conv3 = GCNConv(nn, nn, cached=False)        
-        
+        self.bn1 = torch.nn.BatchNorm1d(nn)
         self.fc1 = torch.nn.Linear(nn, 32)
         self.fc2 = torch.nn.Linear(32, nout)
 
@@ -50,6 +51,7 @@ class GcnNet(nn.Module):
         x = F.relu(self.conv2(x, edge_index))
         x = F.relu(self.conv3(x, edge_index)) 
         x = global_mean_pool(x, data.batch)
+        x=self.bn1(x)
         x = F.relu(self.fc1(x))        
         return F.log_softmax(self.fc2(x), dim=1)
 
@@ -61,19 +63,24 @@ class GatNet(nn.Module):
         self.conv1 = GATConv(ninp, 8, heads=8, dropout=0.0)        
         self.conv2 = GATConv(8 * 8, 16, heads=8, concat=True, dropout=0.0)
         self.conv3 = GATConv(8 * 16, 16, heads=8, concat=True, dropout=0.0)  
-
+        self.bn1 = torch.nn.BatchNorm1d(128)
         self.fc1 = torch.nn.Linear(128, 32)      
         self.fc2 = torch.nn.Linear(32, nout)
 
     def forward(self, data):
         x=data.x       
 
-        #x = F.dropout(x, p=0.6, training=self.training)
+        x = F.dropout(x, p=0.1, training=self.training)
         x = F.elu(self.conv1(x, data.edge_index))
-        #x = F.dropout(x, p=0.6, training=self.training)
+        
+        x = F.dropout(x, p=0.1, training=self.training)
         x = F.elu(self.conv2(x, data.edge_index))
-        x = self.conv3(x, data.edge_index) 
+
+        x = F.dropout(x, p=0.1, training=self.training)
+        x = F.elu(self.conv3(x, data.edge_index)) 
         x = global_mean_pool(x, data.batch)
+
+        x=self.bn1(x)
 
         x = F.relu(self.fc1(x))
         #x = F.dropout(x, training=self.training)
@@ -89,6 +96,8 @@ class ChebNet(nn.Module):
         self.conv1 = ChebConv(ninp, 64,S)
         self.conv2 = ChebConv(64, 128, S)
         self.conv3 = ChebConv(128, 128, S)
+
+        self.bn1 = torch.nn.BatchNorm1d(128)
         
         self.fc1 = torch.nn.Linear(128, 32)
         self.fc2 = torch.nn.Linear(32, nout) #int(d.num_classes))
@@ -110,6 +119,8 @@ class ChebNet(nn.Module):
         x = F.relu(self.conv3(x, edge_index,lambda_max=data.lmax,batch=data.batch))
 
         x = global_mean_pool(x, data.batch)
+
+        x=self.bn1(x)
         x = F.relu(self.fc1(x))
         return F.log_softmax(self.fc2(x), dim=1) 
 
@@ -126,7 +137,7 @@ class GinNet(nn.Module):
 
         nn2 = Sequential(Linear(64, 64), ReLU(), Linear(64, 64))
         self.conv2 = GINConv(nn2,train_eps=True)
-        self.bn2 = torch.nn.BatchNorm1d(128) 
+        self.bn2 = torch.nn.BatchNorm1d(64) 
 
         nn3 = Sequential(Linear(64, 64), ReLU(), Linear(64, 64))
         self.conv3 = GINConv(nn3,train_eps=True)
@@ -144,10 +155,10 @@ class GinNet(nn.Module):
         x = F.relu(self.conv2(x, edge_index))
         x = self.bn2(x)  
         x = F.relu(self.conv3(x, edge_index))
-        x = self.bn3(x) 
-        
-
+         
         x = global_mean_pool(x, data.batch)
+        x = self.bn3(x)
+
         x = F.elu(self.fc1(x))
         #x = F.dropout(x, training=self.training)
         return F.log_softmax(self.fc2(x), dim=1)
@@ -162,6 +173,7 @@ class MlpNet(nn.Module):
         self.conv1 = torch.nn.Linear(ninp, 64)   
         self.conv2 = torch.nn.Linear(64, 64) 
         self.conv3 = torch.nn.Linear(64, 64) 
+        self.bn1 = torch.nn.BatchNorm1d(64)
 
         self.fc1 = torch.nn.Linear(64, 32)     
         self.fc2 = torch.nn.Linear(32, nout) 
@@ -175,7 +187,8 @@ class MlpNet(nn.Module):
         x = F.relu(self.conv3(x))  
 
         x = global_mean_pool(x, data.batch)
-        x = F.elu(self.fc1(x))
+        x=self.bn1(x)
+        x = F.relu(self.fc1(x))
         return F.log_softmax(self.fc2(x), dim=1)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -193,14 +206,14 @@ def train(epoch):
         data = data.to(device)
         optimizer.zero_grad()
         pred = model(data)
-        lss=F.nll_loss(pred, data.y,reduction='sum')
-        L+=lss
+        lss=F.nll_loss(pred, data.y,reduction='sum')        
         lss.backward()
+        L+=lss.cpu().detach().numpy()
         optimizer.step()
         pred = pred.max(1)[1]
         correct += pred.eq(data.y).sum().item()
     s1= correct / trsize
-    return L.cpu().detach().numpy()/trsize,s1
+    return L/trsize,s1
 
 def test():
     model.eval()
