@@ -3,20 +3,38 @@
 This repository consist of codes of ["Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective"](https://openreview.net/forum?id=-qh0M9XWxnv) paper published in ICLR2021.
 
 ## Theoretical and Empirical Frequency Responses
+Here is the our theoretical findings on frequency responses of GNNs
+
+![Sample image](images/freqresponsetable.jpg?raw=true "Title")
+
+
 Studied GNN's spectral analysis codes are in spectral_analysis_result folder. Those codes were written in Matlab.
 You can briefly run each script for each method independently and see the empirical and theoretical frequency responses on Cora graph.
-For instance, Chebnet's frequency response
+For Chebnet's frequency response
 ```
 >chebnet_spectral_analysis
 ```
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
-GIN's frequency response
+For GIN's frequency response under epsilon for -2,-1,0 and 1
 ```
 >gin_spectral_analysis
 ```
 ![Sample image](images/gin.jpg?raw=true "Title")
+
+For GCN's frequency response
+```
+>gcn_spectral_analysis
+```
+![Sample image](images/gcn.jpg?raw=true "Title")
+
+For GAT's frequency response
+```
+>gat_spectral_analysis
+```
+![Sample image](images/gat.jpg?raw=true "Title")
+
 
 ## Datasets
 In this research, we introduced two different new datasets and one common dataset. 
