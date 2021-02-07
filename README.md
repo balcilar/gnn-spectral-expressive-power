@@ -102,13 +102,29 @@ Data(edge_index=[2, 1405], lmax=1.2760227, pos=[75, 2], x=[75, 2], y=[1])
 
 ## MNIST Dataset Results
 
-Briefly launch the mnist_code.py script. You set the method selection hard coded. You can select your method and launch the script.
+Briefly launch the mnist_code.py script. You set the method selection hard coded. You can select your method and launch the script.  
+
+	python mnist_code.py
+	
 
 ## MNIST Dataset Results
 
 Briefly launch the appendix_I.py script. You set the method selection hard coded. You can select your method and launch the script.
 
+	python appendix_I.py
+
 ## BandClass Dataset Results
 
 Briefly launch the appendix_J.py script. You set the method selection hard coded. You can select your method and launch the script.
 
+	python appendix_J.py
+
+
+## Requirements
+These libraries versions are not stricly needed. But these are the configurations in our test machine. Also all dependencies of pytorch-geometric are needed.
+- Python==3.8.5
+- pytorch==1.5.1
+- pytorch_geometric==1.6.1
+- numpy==1.19.1
+- scipy==1.5.2
+- matplotlib==3.3.1
