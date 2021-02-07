@@ -30,7 +30,7 @@ flags.DEFINE_float('dropout', 0.20, 'Dropout rate (1 - keep probability).')
 flags.DEFINE_float('weight_decay', 0.0, 'Weight for L2 loss on embedding matrix.') 
 
 #  select batchsize and model
-batchsize=1000 
+batchsize=64 
 method='chebnet' #  'chebnet' 'gcn'  or  'mlp'
 
 
