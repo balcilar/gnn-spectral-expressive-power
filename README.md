@@ -19,7 +19,7 @@ For Chebnet's frequency response
 
 For CayleyNet's frequency response for zoom parameter is 1.
 ```
->cayley_spectral_analysis
+>cayleynet_spectral_analysis
 ```
 
 ![Sample image](images/cayley.jpg?raw=true "Title")
