@@ -77,4 +77,23 @@ https://graphics.cs.tu-dortmund.de/fileadmin/ls7-www/misc/cvpr/mnist_superpixels
 Sample 2 graph in this dataset can be found in following figure.
 ![Sample image](images/mnist46.jpg?raw=true "Title")
 
+The dataset can be load using Pytorch-geometric by following script. Given sample transform can add node degree and node coordinate to the pixel value as a node features. However we do not use superpixel coordinate in our analysis in order to make the problem harder and more realiztic in terms of graph research. 
+
+```
+from torch_geometric.datasets import MNISTSuperpixels
+from utils import DegreeMaxEigTransform
+transform=DegreeMaxEigTransform(adddegree=True,addposition=False)
+train_dataset = MNISTSuperpixels(root='dataset/MNIST/', train=True, pre_transform=transform)
+test_dataset = MNISTSuperpixels(root='dataset/MNIST/', train=False, pre_transform=transform)
+print(len(train_dataset))
+print(train_dataset[0])
+print(len(test_dataset))
+print(test_dataset[0])
+
+60000
+Data(edge_index=[2, 1399], lmax=1.2635252, pos=[75, 2], x=[75, 2], y=[1])
+10000
+Data(edge_index=[2, 1405], lmax=1.2760227, pos=[75, 2], x=[75, 2], y=[1])
+```
+
 
