@@ -170,6 +170,14 @@ These libraries' versions are not strictly needed. But these are the configurati
 - scipy==1.5.2
 - matplotlib==3.3.1
 
+For tensorflow codes our test environment has following libraries' versions
+- Python==3.6.5
+- tensorflow-gpu==1.15.0
+- numpy==1.17.4
+- matplotlib==3.1.2
+- scipy==1.3.1
+- networkx==2.4
+- pickle==4.0
 
 ## Citation
 
