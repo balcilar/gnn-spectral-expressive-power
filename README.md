@@ -1,6 +1,6 @@
 # Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective
 
-This repository consist of ICLR2021 paper on theoretical and empirical spectral analysis of GNNs
+This repository consist of codes of ["Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective"](https://openreview.net/forum?id=-qh0M9XWxnv) paper published in ICLR2021.
 
 ## Theoretical and Empirical Frequency Responses
 Studied GNN's spectral analysis codes are in spectral_analysis_result folder. Those codes were written in Matlab.
