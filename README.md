@@ -128,3 +128,21 @@ These libraries versions are not stricly needed. But these are the configuration
 - numpy==1.19.1
 - scipy==1.5.2
 - matplotlib==3.3.1
+
+
+## Citation
+
+Please cite this paper if you want to use it in your work,
+
+	@inproceedings{
+	balcilar2021analyzing,
+	title={Analyzing the Expressive Power of Graph Neural Networks in a Spectral Perspective},
+	author={Muhammet Balcilar and Guillaume Renton and Pierre H{\'e}roux and Benoit Ga{\"u}z{\`e}re and S{\'e}bastien Adam and Paul Honeine},
+	booktitle={International Conference on Learning Representations},
+	year={2021},
+	url={https://openreview.net/forum?id=-qh0M9XWxnv}
+	}
+
+  
+## License
+MIT License
