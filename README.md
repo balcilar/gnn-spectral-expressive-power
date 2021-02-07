@@ -132,7 +132,7 @@ These libraries versions are not stricly needed. But these are the configuration
 
 ## Citation
 
-Please cite this paper if you want to use it in your work,
+Please cite this paper if you use codes and/or datasets in your work,
 
 	@inproceedings{
 	balcilar2021analyzing,
