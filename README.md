@@ -126,12 +126,7 @@ Data(edge_index=[2, 1399], lmax=1.2635252, pos=[75, 2], x=[75, 2], y=[1])
 Data(edge_index=[2, 1405], lmax=1.2760227, pos=[75, 2], x=[75, 2], y=[1])
 ```
 
-## MNIST Dataset Results
-
-Briefly launch the mnist_code.py script. You set the method selection hardcoded. You can select your method and launch the script.  
-
-	python mnist_code.py
-	
+# Performance Analysis of GNNs
 
 ## 2DGrid Dataset Results
 
@@ -144,6 +139,14 @@ Briefly launch the appendix_I.py script. You set the method selection hardcoded.
 Briefly launch the appendix_J.py script. You set the method selection hardcoded. You can select your method and launch the script.
 
 	python appendix_J.py
+
+## MNIST Dataset Results
+
+There is two different Mnist implementations, one is using pytorch_geometric. Basically you can launch the mnist_code.py script. You set the method selection hardcoded. You can select your method and launch the script.  
+
+	python mnist_code.py
+	
+For 
 
 
 ## Requirements
