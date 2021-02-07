@@ -71,5 +71,7 @@ print(dataset[0])
 Data(edge_index=[2, 1074], x=[200, 1], y=[1])
 ```
 
-Last, we used MNIST superpixel dataset in our analysis. You can download and extract the "train.pt" and "test.pt" files into dataset/MNIST/raw/ folder.
+Last, we used MNIST superpixel dataset in our analysis. You can download and extract the "train.pt" and "test.pt" files into dataset/MNIST/raw/ folder. Here is the most recent link of Mnist-75.
 https://graphics.cs.tu-dortmund.de/fileadmin/ls7-www/misc/cvpr/mnist_superpixels.tar.gz
+
+
