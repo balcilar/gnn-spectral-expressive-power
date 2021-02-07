@@ -17,6 +17,13 @@ For Chebnet's frequency response
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
+For CayleyNet's frequency response
+```
+>cayley_spectral_analysis
+```
+
+![Sample image](images/cayley.jpg?raw=true "Title")
+
 For GIN's frequency response under epsilon for -2,-1,0 and 1
 ```
 >gin_spectral_analysis
