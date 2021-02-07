@@ -12,38 +12,8 @@ from torch.nn import Sequential, Linear, ReLU
 from torch_geometric.nn import (NNConv, graclus, max_pool, max_pool_x,GINConv,global_add_pool,
                                 global_mean_pool,GATConv,ChebConv,GCNConv)
 from torch_geometric.datasets import MNISTSuperpixels
-
-class DegreeMaxEigTransform(object):   
-
-    def __init__(self,adddegree=True,maxdeg=40,addposition=False):
-        self.adddegree=adddegree
-        self.maxdeg=maxdeg
-        self.addposition=addposition
-
-    def __call__(self, data):
-
-        n=data.x.shape[0] 
-        A=np.zeros((n,n),dtype=np.float32)        
-        A[data.edge_index[0],data.edge_index[1]]=1         
-        if self.adddegree:
-            data.x=torch.cat([data.x,torch.tensor(1/self.maxdeg*A.sum(0)).unsqueeze(-1)],1)
-        if self.addposition:
-            data.x=torch.cat([data.x,data.pos],1)
-
-
-        d = A.sum(axis=0) 
-        # normalized Laplacian matrix.
-        dis=1/np.sqrt(d)
-        dis[np.isinf(dis)]=0
-        dis[np.isnan(dis)]=0
-        D=np.diag(dis)
-        nL=np.eye(D.shape[0])-(A.dot(D)).T.dot(D)
-        V,U = np.linalg.eigh(nL)               
-        vmax=np.abs(V).max()
-        # keep maximum eigenvalue for Chebnet if it is needed
-        data.lmax=vmax.astype(np.float32)        
-        return data
-   
+from utils import DegreeMaxEigTransform
+ 
 #select if node degree and location of superpixel region would be used by model or not.
 #after any chnageing please remove MNIST/processed folder in order to preprocess changes again.
 transform=DegreeMaxEigTransform(adddegree=True,addposition=False)
