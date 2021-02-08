@@ -13,33 +13,33 @@ You can briefly run each script for each method independently and see the empiri
 
 Chebnet's first 5 convolution support's frequency response
 ```
->chebnet_spectral_analysis
+>chebnet_spect_analysis
 ```
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
 CayleyNet's first 7 convolution support's frequency response for zoom parameter is 1.
 ```
->cayleynet_spectral_analysis
+>cayleynet_spect_analysis
 ```
 
 ![Sample image](images/cayley.jpg?raw=true "Title")
 
 GIN's frequency response under epsilon for -2,-1,0 and 1
 ```
->gin_spectral_analysis
+>gin_spect_analysis
 ```
 ![Sample image](images/gin.jpg?raw=true "Title")
 
 GCN's frequency response
 ```
->gcn_spectral_analysis
+>gcn_spect_analysis
 ```
 ![Sample image](images/gcn.jpg?raw=true "Title")
 
 GAT's frequency response
 ```
->gat_spectral_analysis
+>gat_spect_analysis
 ```
 ![Sample image](images/gat.jpg?raw=true "Title")
 
