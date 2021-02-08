@@ -5,7 +5,7 @@ This repository consists of codes of ["Analyzing the Expressive Power of Graph N
 ## Theoretical and Empirical Frequency Responses
 Here are our theoretical findings on frequency responses of GNNs
 
-![Sample image](images/freqresponsetable.jpg?raw=true "Title")
+![Sample image](images/freqresponsetable2.jpg?raw=true "Title")
 
 
 Studied GNN's spectral analysis codes are in the spectral_analysis_codes folder. Those codes were written in Matlab.
