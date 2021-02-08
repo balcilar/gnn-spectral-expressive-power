@@ -76,7 +76,7 @@ Data(edge_index=[2, 358685], m=[9025, 1], x=[9025, 1], y=[9025, 3])
 ```
 
 ### BandClass
-Another introduced dataset for spectral expressive power is the BandClass dataset, which consists of 3K train, 1K validation, and 1K test planar graph, each has 200 nodes. Problem is a binary classification problem where the ground truth of classes was determined by the frequency on the graph. You can visualize two sample graphs using gspbox library by following the Matlab script.
+Another introduced dataset for spectral expressive power is the BandClass dataset, which consists of 3K train, 1K validation, and 1K test planar graph, each has 200 nodes. Problem is a binary classification problem where the ground truth of classes was determined by the frequency on the graph. You can visualize two sample graphs using gspbox library by following the Matlab script. Note that even though the dataset includes the node coordinates, we neglected it in order to make the problem harder and more realistic in terms of graph research.
 
 ```
 load dataset/bandclass/raw/bandclass
