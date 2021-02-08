@@ -6,6 +6,8 @@ close all
 h=1;
 % set vmax for theoretical freq response
 vmax=3;
+% number of kernel is 2*R+1
+R=3;
 
 % empricial frequency response of CayleyNet on Cora graph
 load coraA;
@@ -22,10 +24,10 @@ L=eye(n)-(W*D)'*D;
 vv=diag(v);
 
 
-R=3;
+
 v=vv;
 
-B=ones(n,1);
+B=diag(u'*eye(n)*u);
 for r=1:R    
     tmp1=(h*L-i*eye(n))^r;
     tmp2=(h*L+i*eye(n))^r; 
@@ -39,7 +41,7 @@ for r=1:R
     B=[B B1 B2];
 end
 figure;hold on;
-for i=1:7    
+for i=1:2*R+1    
     l{i}=num2str(i);
     stem3(v,0-0.4*i*ones(length(v),1),abs(B(:,i)));
 end
@@ -58,24 +60,17 @@ zlabel('Magnitude');
 % theoretical frequency response of CayleyNet in range of [0 vmax]
 
 v=0:0.001:vmax;
-clear Fr Fi
 teta=atan2(-1,v)-atan2(1,v);
-for j=1:3
-    Fr(:,j)=cos(j*teta);
-    Fi(:,j)=-sin(j*teta);
-end
-F=zeros(size(Fr,1),7);
-F(:,2)=Fr(:,1);
-F(:,3)=Fi(:,1);
-F(:,4)=Fr(:,2);
-F(:,5)=Fi(:,2);
-F(:,6)=Fr(:,3);
-F(:,7)=Fi(:,3);
+F=zeros(length(v),2*R+1 );
 F(:,1)=1;
+for r=1:2*R+1 
+    F(:,2*r)=cos(r*teta);
+    F(:,2*r+1)=-sin(r*teta);
+end
 
 b=F;
 figure;hold on;
-for i=1:7
+for i=1:2*R+1 
     
     l{i}=num2str(i);
     stem3(v,0-0.4*i*ones(length(v),1),abs(b(:,i)));
