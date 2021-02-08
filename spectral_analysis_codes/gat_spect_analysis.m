@@ -1,9 +1,15 @@
 close all
 clear all
+
+% number of simulation
+nsim=250;
+
+
+
 load coraA
 A=double(A);
 n=size(A,1);
-
+nf=size(F,2);
 d = sum(A,2);
 % normalized laplacien
 dis=1./sqrt(d);
@@ -15,13 +21,12 @@ nL=eye(n)-(A*D)'*D;
 % make eignevalue as vector
 v=diag(v);
 
-%A0=(A+eye(n))*(A+eye(n));
+
 A0=A+eye(n);
-%b=zeros(2708,2708,250);
-bb=zeros(2708,250);
-for i=1:250
+bb=zeros(n,nsim);
+for i=1:nsim
     i
-    W=randn(1433,8);
+    W=randn(nf,8);
     w1=randn(8,1);
     w2=randn(8,1);
     f=F*W;

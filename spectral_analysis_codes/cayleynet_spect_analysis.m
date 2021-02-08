@@ -6,7 +6,7 @@ close all
 h=1;
 % set vmax for theoretical freq response
 vmax=3;
-% number of kernel is 2*R+1
+% number of convolution support is 2*R+1
 R=3;
 
 % empricial frequency response of CayleyNet on Cora graph

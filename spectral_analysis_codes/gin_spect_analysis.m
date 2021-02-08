@@ -2,6 +2,10 @@ clear all
 clc
 
 
+%epsilons
+E=[-2 -1 0 1];
+
+
 load coraA;
 W=double(A);
 n=size(W,1);
@@ -18,10 +22,9 @@ L=eye(n)-(W*D)'*D;
 v=diag(v);
 
 
-%gin-0
-E=[-2 -1 0 1];
 
-for i=1:4
+
+for i=1:length(E)
     e=E(i);
     C=W+(1+e)*eye(size(W));
     B=u'*C*u;    
@@ -29,7 +32,7 @@ for i=1:4
 end
 
 figure;hold on;
-for i=1:4 
+for i=1:length(E)
     l{i}=num2str(i);   
     stem3(v,0-0.4*i*ones(length(v),1),abs(b(:,i)));
 end
@@ -43,38 +46,17 @@ zlabel('magnitude');
 
 % theoretical freq response
 p=mean(sum(A));
-t1=p*((1+E(1))/p+1-v);
-t2=p*((1+E(2))/p+1-v);
-t3=p*((1+E(3))/p+1-v);
-t4=p*((1+E(4))/p+1-v);
+for i=1:length(E)
+    t{i}=p*((1+E(i))/p+1-v);
+end
 
 figure;
-subplot(2,2,1);hold on;
-plot(v,abs(b(:,1)),'b-');
-plot(v,abs(t1),'r-');
-legend({'empirical','theoretical'});
-xlabel('Eigenvalue');
-title('epsilon= -2');
-
-subplot(2,2,2);hold on;
-plot(v,abs(b(:,2)),'b-');
-plot(v,abs(t2),'r-');
-legend({'empirical','theoretical'});
-xlabel('Eigenvalue');
-title('epsilon= -1');
-
-subplot(2,2,3);hold on;
-plot(v,abs(b(:,3)),'b-');
-plot(v,abs(t3),'r-');
-legend({'empirical','theoretical'});
-xlabel('Eigenvalue');
-title('epsilon= 0');
-
-subplot(2,2,4);hold on;
-plot(v,abs(b(:,4)),'b-');
-plot(v,abs(t4),'r-');
-legend({'empirical','theoretical'});
-xlabel('Eigenvalue');
-title('epsilon= 1');
-
+for i=1:length(E)
+    subplot(2,2,i);hold on;
+    plot(v,abs(b(:,i)),'b-');
+    plot(v,abs(t{i}),'r-');
+    legend({'empirical','theoretical'});
+    xlabel('Eigenvalue');
+    title(['epsilon=' num2str(E(i))]);
+end
 
