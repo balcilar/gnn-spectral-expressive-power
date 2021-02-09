@@ -244,17 +244,14 @@ class GraphConvolutionBatch(Layer):
         self.out=out
         return out
 
-class AggLayer(Layer):
-    """Graph convolution layer."""
+class ReadoutLayer(Layer):
+    """Graph Readout layer."""
     def __init__(self, placeholders,method='mean',**kwargs):
-        super(AggLayer, self).__init__(**kwargs)
+        super(ReadoutLayer, self).__init__(**kwargs)
         self.ND=placeholders['nnodes']          
 
         self.method=method 
-        self.istrain = placeholders['istrain']  
-
-        #self.DV=placeholders['DV'] 
-        #self.blayer=tf.layers.batch_normalization     
+        self.istrain = placeholders['istrain'] 
 
         if self.logging:
             self._log_vars()

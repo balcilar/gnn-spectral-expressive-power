@@ -194,6 +194,32 @@ def chebyshev_polynomials_orj(adj, k):
 
     return t_k
 
+def cayley_polynomials(adj,h,k):
+    t_k = list()
+    nd=adj.shape[0]
+    t_k.append(np.eye(nd))
+    W=1.0*adj
+    deg = W.sum(axis=0)    
+    dis=1/np.sqrt(deg)
+    dis[np.isinf(dis)]=0
+    dis[np.isnan(dis)]=0
+    D=np.diag(dis)
+    L=np.eye(D.shape[0])-(W.dot(D)).T.dot(D)
+    #V1,U1 = np.linalg.eigh(L) 
+    tmp1=(h*L-(0+1j)*np.eye(nd));
+    tmp2=(h*L+(0+1j)*np.eye(nd)); 
+    tmp=(tmp1).dot(np.linalg.inv(tmp2));
+    tmp0=tmp.copy()
+    for r in range(0,k):        
+        c1=tmp.real 
+        c2=((0+1j)*tmp).real
+        c1[np.isnan(c1)]=0
+        c2[np.isnan(c2)]=0
+        t_k.append(c1)
+        t_k.append(c2)
+        tmp=tmp.dot(tmp0)
+
+    return t_k
 
 
 def chebyshev_polynomials(adj, k,st=False,isnormalized=True):

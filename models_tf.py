@@ -189,7 +189,7 @@ class GCN(Model):
 
 
 class DSGCNN(Model):
-    def __init__(self, placeholders, input_dim, agg='mean', nkernel=1, **kwargs):
+    def __init__(self, placeholders, input_dim, readout='mean', nkernel=1, **kwargs):
         super(DSGCNN, self).__init__(**kwargs)
 
         self.inputs = placeholders['features']
@@ -198,7 +198,7 @@ class DSGCNN(Model):
         self.placeholders = placeholders        
         self.nkernel=nkernel
         self.optimizer = tf.train.AdamOptimizer(learning_rate=FLAGS.learning_rate)
-        self.agg=agg
+        self.readout=readout
         self.build()
 
     def _loss(self):
@@ -249,7 +249,7 @@ class DSGCNN(Model):
                                             dropout=True,                                            
                                             logging=self.logging))   
 
-        self.layers.append(AggLayer(method=self.agg,placeholders=self.placeholders))
+        self.layers.append(ReadoutLayer(method=self.readout,placeholders=self.placeholders))
 
         self.layers.append(Dense(input_dim=FLAGS.dense,
                                 output_dim=FLAGS.dense2,

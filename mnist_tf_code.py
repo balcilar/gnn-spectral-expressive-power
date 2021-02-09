@@ -30,27 +30,30 @@ flags.DEFINE_float('dropout', 0.20, 'Dropout rate (1 - keep probability).')
 flags.DEFINE_float('weight_decay', 0.0, 'Weight for L2 loss on embedding matrix.') 
 
 #  select batchsize and model
-batchsize=64 
-method='chebnet' #  'chebnet' 'gcn'  or  'mlp'
-
+batchsize=1000 
+#  select method out of 'chebnet' 'gcn'  'mlp' or 'cayleynet'
+method='chebnet' 
+# number of supports for Chebnet and Cayleynet, max should be number of supports that you prepared by prepareMnist_for_tf.py code
+nkernel=5
 
 ND=np.load('nnodes.npy')
 FF=np.load('feats.npy')    
 YY=np.load('output.npy')    
-SP=np.load('supports.npy')   
+SP=np.load('supports.npy')  
 
 if method=='chebnet':
-    # first 5 supports are chebnets support
-    nkernel=5
+    # first nkernel supports are chebnets support    
     SP=SP[:,0:nkernel,:,:]
 elif method=='gcn':
     # 6th support is gcn support
     nkernel=1
     SP=SP[:,5:6,:,:]
-else:
+elif method=='mlp':
     # first support is identity it is equivalent to MLP
     nkernel=1
     SP=SP[:,0:1,:,:]
+else: # last nkernel supports are cayleynet supports   
+    SP=SP[:,6:6+nkernel,:,:]
 
 # max number of nodes
 nmax=75
@@ -70,7 +73,7 @@ placeholders = {
     'dropout': tf.placeholder_with_default(0., shape=()),        
 }
 
-model = DSGCNN(placeholders, input_dim=FF.shape[2],nkernel=nkernel,logging=True,agg='mean')  
+model = DSGCNN(placeholders, input_dim=FF.shape[2],nkernel=nkernel,logging=True,readout='mean')  
 
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
