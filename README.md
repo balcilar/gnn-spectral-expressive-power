@@ -9,7 +9,7 @@ Here are our theoretical findings on frequency responses of GNNs
 
 
 Studied GNN's spectral analysis codes are in the spectral_analysis_codes folder. Those codes were written in Matlab.
-You can briefly run each script for each method independently and see the empirical frequency responses on the Cora graph and and the theoretical ones.
+You can briefly run each script for each method independently and see the empirical frequency responses on the Cora graph and the theoretical ones.
 
 Chebnet's first 5 convolution support's frequency response
 ```
@@ -18,7 +18,7 @@ Chebnet's first 5 convolution support's frequency response
 
 ![Sample image](images/cheb.jpg?raw=true "Title")
 
-CayleyNet's first 7 convolution support's frequency response for zoom parameter is 1.
+CayleyNet's first 7 convolution support's frequency response where zoom parameter is 1.
 ```
 >cayleynet_spect_analysis
 ```
@@ -142,17 +142,17 @@ Briefly launch the appendix_J.py script. You set the method selection hardcoded.
 
 ## MNIST Dataset Results
 
-There is two different Mnist implementations, one is using pytorch_geometric. Basically you can launch the mnist_code.py script. You set the method selection hardcoded. You can select your method and launch the script.  
+There is two different Mnist implementations, one is using pytorch_geometric. Basically you can launch the mnist_code.py script. You set the method selection hardcoded. You can select your method out of ChebNet, GIN, GAT, GCN, MLP and launch the script.  
 
 	python mnist_code.py
 	
-For tensorflow1 implementation, we do not use any GNN library. First you need to run the data preparation code. It will read the Mnist-75 dataset, extract adjacency, calculates the Chebnet and GCN supports and save the data into disk in numpy matrix format. It takes a while. But it should be run just once.
+For tensorflow1 implementation, we do not use any GNN library. First you need to run the data preparation code. It will read the Mnist-75 dataset, extract adjacency, calculates the CayleyNet, Chebnet and GCN supports and save the data into disk in numpy matrix format. It takes a while. But it should be run just once.
 
 	python prepareMnist_for_tf.py
 Later, you can launch the code written by tensorflow1 as follows.
 
 	python mnist_tf_code.py
-We have notice that, since the Mnist-75 graphs are quite dense, full matrix multiplication implementation (our tf1 implementation) may be faster than edge based multiplication. Thus tf1 implementation is quite faster. Also you can run tf1 implementaion for GCN and MLP in addition to Chebnet. Around 50th epoch, Chebnet with 5 convolution supports in tf1 version is converged.
+We have notice that, since the Mnist-75 graphs are quite dense, full matrix multiplication implementation (our tf1 implementation) may be faster than edge based multiplication. Thus tf1 implementation is quite faster. Also you can run tf1 implementaion for CayleyNet, GCN and MLP in addition to Chebnet. Around 50th epoch, Chebnet with 5 convolution supports in tf1 version is converged.
 
 	Epoch: 46, trainloss: 0.2266, Val: 0.1991,val acc 0.9378, Test: 0.2447, test acc 0.9212 besttest: 9266 
 	Epoch: 47, trainloss: 0.2228, Val: 0.1995,val acc 0.9384, Test: 0.2558, test acc 0.9181 besttest: 9266 
