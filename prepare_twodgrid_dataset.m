@@ -45,14 +45,14 @@ Y=[fI1(:) fI2(:) fI3(:)];
 % basically A shows 4 neighborhood connection to the concerned node
 % download gspbox and be sure the path is true, then run its gsp_start
 % script in the library folder
-run /home/mb/projects/Graph_Signal_Processing/gspbox/gsp_start
+run ../gspbox/gsp_start
 G=gsp_2dgrid(size(I,1));
 A=full(G.W);
 A=A+A';
 A(A>0)=1;
 
-% create mask to avoid inconsistend of nodes near to borders
-mask=zeros(30,30);
+% create mask to avoid inconsistency of nodes near to borders
+mask=zeros(size(I,1),size(I,1));
 mask(3:end-2,3:end-2)=1;
 mask=mask(:);
 
